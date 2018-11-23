@@ -3,9 +3,9 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
         
-<hibernate-mapping package="info.chen.model">
+<hibernate-mapping package="info.chen.model.xml_config">
 
-    <class name="User" table="user">
+    <class name="info.chen.model.xml_config.User" table="user">
         <id name="id" column="id">
             <generator class="increment"/>
         </id>
@@ -13,5 +13,6 @@
         <property name="firstname" column="firstname"/>
         <!--省略 column 的时候，column 值默认为 name 中的值-->
         <property name="lastname"/>
+        <property name="register_date" column="date" type="timestamp"/>
     </class>
 </hibernate-mapping>

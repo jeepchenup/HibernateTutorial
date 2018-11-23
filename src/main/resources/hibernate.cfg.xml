@@ -25,7 +25,8 @@
         <property name="connection.pool_size">1</property>
 
         <!-- ==========entity mapping========== -->
-        <mapping resource="info/chen/model/User.hbm.xml"/>
+        <mapping resource="info/chen/model/xml_config/User.hbm.xml"/>
+        <mapping class="info.chen.model.annotation.User"/>
     </session-factory>
 
 </hibernate-configuration>
