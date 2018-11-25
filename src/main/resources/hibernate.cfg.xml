@@ -22,8 +22,16 @@
         <property name="show_sql">true</property>
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
+        <!--<property name="connection.pool_size">1</property>-->
 
+        <!--use third-part database pool-->
+        <property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">50</property>
+        <property name="c3p0.timeout">1800</property>
+        <property name="c3p0.max_statements">100000</property>
+
+        <!--auto create table-->
+        <property name="hbm2ddl.auto">create</property>
         <!-- ==========entity mapping========== -->
         <mapping resource="info/chen/model/xml_config/User.hbm.xml"/>
         <mapping class="info.chen.model.annotation.User"/>
