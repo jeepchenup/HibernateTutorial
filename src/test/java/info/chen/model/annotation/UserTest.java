@@ -1,5 +1,6 @@
 package info.chen.model.annotation;
 
+import info.chen.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -16,7 +17,7 @@ public class UserTest {
     @Before
     public void setup() {
         System.out.println("strating to config session ... ...");
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        sessionFactory = HibernateUtil.getSessionFactory();
     }
 
     @After

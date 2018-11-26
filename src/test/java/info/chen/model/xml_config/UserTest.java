@@ -1,8 +1,11 @@
 package info.chen.model.xml_config;
 
+import info.chen.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +20,7 @@ public class UserTest {
     @Before
     public void setup() {
         System.out.println("start to setup ... ...");
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        sessionFactory = HibernateUtil.getSessionFactory();
     }
 
     @After
