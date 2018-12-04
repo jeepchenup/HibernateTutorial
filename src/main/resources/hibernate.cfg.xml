@@ -33,6 +33,8 @@
 
         <!--auto create table-->
         <property name="hbm2ddl.auto">update</property>
+        <!--设置事务隔离级别-->
+        <property name="connection.isolation">2</property>
         <!-- ==========entity mapping========== -->
         <mapping resource="info/chen/model/xml_config/User.hbm.xml"/>
         <mapping class="info.chen.model.annotation.User"/>

@@ -6,7 +6,7 @@
 <hibernate-mapping package="info.chen.model.xml_config">
 
     <class name="info.chen.model.xml_config.User" table="user">
-        <id name="id" column="id">
+        <id name="id" column="id" unsaved-value="111">
             <generator class="increment"/>
         </id>
         <property name="username" column="username"/>

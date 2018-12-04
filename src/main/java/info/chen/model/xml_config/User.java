@@ -64,7 +64,9 @@ public class User {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String register_date_str = sdf.format(register_date);
+        String register_date_str = "";
+        if(register_date != null)
+            register_date_str = sdf.format(register_date);
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
