@@ -5,14 +5,26 @@
         
 <hibernate-mapping package="info.chen.model.xml_config">
 
-    <class name="info.chen.model.xml_config.User" table="user">
+    <class name="info.chen.model.xml_config.User" table="user" dynamic-update="true" dynamic-insert="true">
         <id name="id" column="id" unsaved-value="111">
-            <generator class="increment"/>
+            <generator class="hilo"/>
         </id>
-        <property name="username" column="username"/>
+        <property name="username" type="java.lang.String" column="username" update="false" length="20"/>
         <property name="firstname" column="firstname"/>
         <!--省略 column 的时候，column 值默认为 name 中的值-->
         <property name="lastname"/>
-        <property name="register_date" column="date" type="timestamp"/>
+        <property name="register_date" column="register_date" type="date"/>
+        <!--映射派生属性-->
+        <property name="description" formula="(SELECT concat(firstname, ' : ', lastname) FROM USER u WHERE u.id = id)"/>
+        <!--映射大对象-->
+        <!--默认情况下，clob 对应的是longtext类型，blob 对应的是 longblob 类型-->
+        <!--<property name="content" type="clob" column="CONTENT"/>-->
+        <!--<property name="image" type="blob" column="IMGAE"/>-->
+        <property name="content">
+            <column name="CONTENT" sql-type="mediumtext"/>
+        </property>
+        <property name="image">
+            <column name="IMAGE" sql-type="mediumblob"/>
+        </property>
     </class>
 </hibernate-mapping>

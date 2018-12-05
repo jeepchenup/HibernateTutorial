@@ -26,18 +26,30 @@
         <!--<property name="connection.pool_size">1</property>-->
 
         <!--use third-part database pool-->
-        <!--<property name="c3p0.min_size">5</property>-->
-        <!--<property name="c3p0.max_size">50</property>-->
-        <!--<property name="c3p0.timeout">1800</property>-->
-        <!--<property name="c3p0.max_statements">100000</property>-->
+        <property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">10</property>
+        <property name="c3p0.timeout">2000</property>
+        <property name="c3p0.max_statements">10</property>
+        <property name="c3p0.idle_test_period">2000</property>
+        <property name="c3p0.timeout">2000</property>
+
+        <!-- 每次 update/delete/insert 条数-->
+        <property name="jdbc.batch_size">10</property>
+        <!--每次 select 条数-->
+        <property name="jdbc.fetch_size">10</property>
 
         <!--auto create table-->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         <!--设置事务隔离级别-->
         <property name="connection.isolation">2</property>
         <!-- ==========entity mapping========== -->
         <mapping resource="info/chen/model/xml_config/User.hbm.xml"/>
-        <mapping class="info.chen.model.annotation.User"/>
+        <mapping resource="info/chen/entity/Worker.hbm.xml"/>
+        <!--<mapping class="info.chen.model.annotation.User"/>-->
+
+        <!--many to one-->
+        <mapping resource="info/chen/manyToOne/Customer.hbm.xml"/>
+        <mapping resource="info/chen/manyToOne/Order.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

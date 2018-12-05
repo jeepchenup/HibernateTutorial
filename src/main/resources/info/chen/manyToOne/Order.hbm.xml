@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.chen.manyToOne">
+    <!--MYSQL 中的表名不能为 order-->
+    <class name="Order" table="ORDERS">
+        <id name="orderId" column="ORDER_ID">
+            <generator class="native"/>
+        </id>
+        <property name="orderDesc" column="ORDER_DESC" type="java.lang.String"/>
+        <many-to-one name="customer" class="Customer" column="CUSTOMER_ID"/>
+    </class>
+</hibernate-mapping>
+   
