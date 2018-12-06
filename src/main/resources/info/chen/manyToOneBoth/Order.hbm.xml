@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.chen.manyToOneBoth">
+    <class name="Order" table="ORDERS">
+        <id name="id" column="ID" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+
+        <property name="description" column="DESCRIPTION" type="java.lang.String"/>
+        <many-to-one name="customer" class="Customer" column="CUSTOMER_ID"/>
+    </class>
+</hibernate-mapping>
+   

@@ -39,17 +39,21 @@
         <property name="jdbc.fetch_size">10</property>
 
         <!--auto create table-->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <!--设置事务隔离级别-->
         <property name="connection.isolation">2</property>
         <!-- ==========entity mapping========== -->
-        <mapping resource="info/chen/model/xml_config/User.hbm.xml"/>
-        <mapping resource="info/chen/entity/Worker.hbm.xml"/>
+        <!--<mapping resource="info/chen/model/xml_config/User.hbm.xml"/>-->
+        <!--<mapping resource="info/chen/entity/Worker.hbm.xml"/>-->
         <!--<mapping class="info.chen.model.annotation.User"/>-->
 
         <!--many to one-->
-        <mapping resource="info/chen/manyToOne/Customer.hbm.xml"/>
-        <mapping resource="info/chen/manyToOne/Order.hbm.xml"/>
+        <!--<mapping resource="info/chen/manyToOne/Customer.hbm.xml"/>-->
+        <!--<mapping resource="info/chen/manyToOne/Order.hbm.xml"/>-->
+
+        <!--many to one both-->
+        <mapping resource="info/chen/manyToOneBoth/Customer.hbm.xml"/>
+        <mapping resource="info/chen/manyToOneBoth/Order.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>
