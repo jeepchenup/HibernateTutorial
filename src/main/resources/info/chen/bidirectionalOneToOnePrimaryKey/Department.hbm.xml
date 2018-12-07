@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.chen.bidirectionalOneToOnePrimaryKey">
+
+    <class name="Department" table="DEPARTMENT">
+        <id name="id" column="DEPARTMENT_ID" type="java.lang.Integer">
+            <generator class="foreign">
+                <param name="property">manager</param>
+            </generator>
+        </id>
+
+        <property name="name" column="DEPARTMENT_NAME" type="java.lang.String"/>
+        <one-to-one name="manager" constrained="true"/>
+    </class>
+</hibernate-mapping>
+   

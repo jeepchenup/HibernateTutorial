@@ -39,7 +39,7 @@
         <property name="jdbc.fetch_size">10</property>
 
         <!--auto create table-->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         <!--设置事务隔离级别-->
         <property name="connection.isolation">2</property>
         <!-- ==========entity mapping========== -->
@@ -52,8 +52,20 @@
         <!--<mapping resource="info/chen/manyToOne/Order.hbm.xml"/>-->
 
         <!--many to one both-->
-        <mapping resource="info/chen/manyToOneBoth/Customer.hbm.xml"/>
-        <mapping resource="info/chen/manyToOneBoth/Order.hbm.xml"/>
+        <!--<mapping resource="info/chen/manyToOneBoth/Customer.hbm.xml"/>-->
+        <!--<mapping resource="info/chen/manyToOneBoth/Order.hbm.xml"/>-->
+
+        <!-- A bidirectional one-to-one association foreign key -->
+        <!--<mapping resource="info/chen/bidirectionalOneToOneForeign/Manager.hbm.xml"/>-->
+        <!--<mapping resource="info/chen/bidirectionalOneToOneForeign/Department.hbm.xml"/>-->
+
+        <!--A bidirectional one-to-one association primary key-->
+        <!--<mapping resource="info/chen/bidirectionalOneToOnePrimaryKey/Manager.hbm.xml"/>-->
+        <!--<mapping resource="info/chen/bidirectionalOneToOnePrimaryKey/Department.hbm.xml"/>-->
+
+        <!--A unidirectional many-to-many association -->
+        <mapping resource="info/chen/unidirectionalManyToMany/Person.hbm.xml"/>
+        <mapping resource="info/chen/unidirectionalManyToMany/Address.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

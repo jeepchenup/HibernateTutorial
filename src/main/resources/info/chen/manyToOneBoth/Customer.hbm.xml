@@ -10,7 +10,8 @@
         
         <property name="name" column="CUSTOMER_NAME" type="java.lang.String"/>
 
-        <set name="orders" table="ORDERS" inverse="true">
+        <!--inverse=true 让多的一方控制-->
+        <set name="orders" table="ORDERS" inverse="true" cascade="save-update" order-by="DESCRIPTION DESC">
             <!--外键对应的列名-->
             <key column="CUSTOMER_ID"/>
             <one-to-many class="Order"/>
