@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.chen.bidirectionalManyToMany">
+
+    <class name="Person" table="PERSON">
+        <id name="id" column="ID" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="NAME" type="java.lang.String"/>
+        <set name="addresses" table="PERSON_ADDRESS" inverse="true">
+            <key column="PERSON_ID"/>
+            <many-to-many column="ADDRESS_ID" class="Address"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
+   

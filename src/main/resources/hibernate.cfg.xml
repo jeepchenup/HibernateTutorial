@@ -64,8 +64,13 @@
         <!--<mapping resource="info/chen/bidirectionalOneToOnePrimaryKey/Department.hbm.xml"/>-->
 
         <!--A unidirectional many-to-many association -->
-        <mapping resource="info/chen/unidirectionalManyToMany/Person.hbm.xml"/>
-        <mapping resource="info/chen/unidirectionalManyToMany/Address.hbm.xml"/>
+        <!--<mapping resource="info/chen/unidirectionalManyToMany/Person.hbm.xml"/>-->
+        <!--<mapping resource="info/chen/unidirectionalManyToMany/Address.hbm.xml"/>-->
+
+        <!--A didirectional many-to-many association -->
+
+        <mapping resource="info/chen/bidirectionalManyToMany/Person.hbm.xml"/>
+        <mapping resource="info/chen/bidirectionalManyToMany/Address.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>
