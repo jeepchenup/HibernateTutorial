@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.chen.inheritance_mapping.unionSubclass">
+    <class name="Person" table="PERSON">
+        <id name="id" column="ID" type="int">
+            <generator class="hilo"/>
+        </id>
+
+        <property name="name" column="NAME" type="string"/>
+        <property name="age" column="AGE" type="int"/>
+        <!--使用 union-subclass 的时候，母表 id 生成策略是不能设置成 increment-->
+        <union-subclass name="Student" table="STUDENT">
+            <property name="schoolName" column="SCHOOL_NAME" type="string"/>
+        </union-subclass>
+    </class>
+</hibernate-mapping>
+   

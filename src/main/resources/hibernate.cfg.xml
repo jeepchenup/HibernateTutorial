@@ -68,9 +68,13 @@
         <!--<mapping resource="info/chen/unidirectionalManyToMany/Address.hbm.xml"/>-->
 
         <!--A didirectional many-to-many association -->
+        <!--<mapping resource="info/chen/bidirectionalManyToMany/Person.hbm.xml"/>-->
+        <!--<mapping resource="info/chen/bidirectionalManyToMany/Address.hbm.xml"/>-->
 
-        <mapping resource="info/chen/bidirectionalManyToMany/Person.hbm.xml"/>
-        <mapping resource="info/chen/bidirectionalManyToMany/Address.hbm.xml"/>
+        <!--inheritance mapping-->
+        <!--<mapping resource="info/chen/inheritance_mapping/subclass/Person.hbm.xml"/>-->
+        <!--<mapping resource="info/chen/inheritance_mapping/joinedSubclass/Person.hbm.xml"/>-->
+        <mapping resource="info/chen/inheritance_mapping/unionSubclass/Person.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

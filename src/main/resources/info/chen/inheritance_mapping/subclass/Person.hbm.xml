@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.chen.inheritance_mapping.subclass">
+
+    <class name="Person" table="PERSON" discriminator-value="PERSON" dynamic-update="true">
+        <id name="id" type="int" column="ID">
+            <generator class="native"/>
+        </id>
+
+        <discriminator column="PERSON_TYPE" type="string"/>
+        <property name="name" column="NAME" type="string"/>
+        <property name="age" column="AGE" type="int"/>
+
+        <subclass name="Student" discriminator-value="STUDENT" dynamic-update="true">
+            <property name="schoolName" column="SCHOOL_NAME" type="string"/>
+        </subclass>
+    </class>
+</hibernate-mapping>
+   
