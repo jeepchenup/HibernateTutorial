@@ -26,12 +26,12 @@
         <!--<property name="connection.pool_size">1</property>-->
 
         <!--use third-part database pool-->
-        <property name="c3p0.min_size">5</property>
-        <property name="c3p0.max_size">10</property>
-        <property name="c3p0.timeout">2000</property>
-        <property name="c3p0.max_statements">10</property>
-        <property name="c3p0.idle_test_period">2000</property>
-        <property name="c3p0.timeout">2000</property>
+        <!--<property name="c3p0.min_size">5</property>-->
+        <!--<property name="c3p0.max_size">10</property>-->
+        <!--<property name="c3p0.timeout">2000</property>-->
+        <!--<property name="c3p0.max_statements">10</property>-->
+        <!--<property name="c3p0.idle_test_period">2000</property>-->
+        <!--<property name="c3p0.timeout">2000</property>-->
 
         <!-- 每次 update/delete/insert 条数-->
         <property name="jdbc.batch_size">10</property>
@@ -39,7 +39,7 @@
         <property name="jdbc.fetch_size">10</property>
 
         <!--auto create table-->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <!--设置事务隔离级别-->
         <property name="connection.isolation">2</property>
         <!-- ==========entity mapping========== -->
@@ -74,7 +74,11 @@
         <!--inheritance mapping-->
         <!--<mapping resource="info/chen/inheritance_mapping/subclass/Person.hbm.xml"/>-->
         <!--<mapping resource="info/chen/inheritance_mapping/joinedSubclass/Person.hbm.xml"/>-->
-        <mapping resource="info/chen/inheritance_mapping/unionSubclass/Person.hbm.xml"/>
+        <!--<mapping resource="info/chen/inheritance_mapping/unionSubclass/Person.hbm.xml"/>-->
+
+        <!--HQL-->
+        <mapping resource="info/chen/HQL/Department.hbm.xml"/>
+        <mapping resource="info/chen/HQL/Employee.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

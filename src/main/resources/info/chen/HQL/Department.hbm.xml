@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="info.chen.HQL">
+
+    <class name="Department" table="DEPARTMENT">
+        <id name="id" column="ID" type="int">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="NAME" type="string"/>
+        <set name="employees" table="EMPLOYEE" inverse="true">
+            <!--这里的 key 对应的是 foreign key 里面的column 名称-->
+            <key column="DEPARTMENT_ID"/>
+            <one-to-many class="Employee"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
+   
