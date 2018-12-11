@@ -7,6 +7,14 @@ public class Employee {
     private Float salary;
     private Department department;
 
+    public Employee() {
+    }
+
+    public Employee(Float salary, Department department) {
+        this.salary = salary;
+        this.department = department;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -37,5 +45,15 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                ", department=" + department +
+                '}';
     }
 }

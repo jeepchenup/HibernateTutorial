@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class HQLTest {
@@ -65,4 +67,67 @@ public class HQLTest {
         List<Employee> employeeList = query.list();
         System.out.println(employeeList.size());
     }
+
+    @Test
+    public void testHQLPageQuery() {
+        /* 分页查询 */
+
+        String SQL = "FROM Employee";
+        Query query = session.createQuery(SQL);
+
+        // 页数
+        int pageNo = 3;
+        // 每页显示记录数量
+        int pageSize = 5;
+
+        query.setFirstResult((pageNo - 1) * pageSize).setMaxResults(pageSize);
+        List<Employee> employees = query.list();
+        System.out.println(employees);
+    }
+
+    @Test
+    public void testHQLNamedQuery() {
+//        使用 query 标签来查询
+        Query query = session.getNamedQuery("salaryEmployees");
+        query.setFloat("minSalary", 80000)
+                .setFloat("maxSalary",90000);
+
+        List<Employee> employees = query.list();
+        System.out.println(employees.size());
+    }
+
+    @Test
+    public void testHQLFiledQuery() {
+        // 1 ==> 只查询一列时
+        Query query = session.createQuery("SELECT e.salary FROM Employee e WHERE e.salary > :salary AND e.department = :department");
+        Department department = new Department();
+        department.setId(7);
+        query.setFloat("salary", 156000)
+                .setEntity("department", department);
+
+        List<Float> salaries = query.list();
+//        System.out.println(query.list().getClass().getName());
+        for(Float salary : salaries) {
+            System.out.println(salary);
+        }
+
+        // 2 ==> 查询多列时
+        query = session.createQuery("SELECT e.salary, e.department FROM Employee e WHERE e.salary > :salary AND e.department = :department");
+        query.setFloat("salary", 156000)
+                .setEntity("department", department);
+        List<Object[]> objects = query.list();
+        for (Object[] arrary : objects) {
+            System.out.println(Arrays.asList(arrary));
+        }
+
+        // 3 ==> 封装结果集
+        query = session.createQuery("SELECT new Employee(e.salary, e.department) FROM Employee e WHERE e.salary > :salary AND e.department = :department");
+        query.setFloat("salary", 156000)
+                .setEntity("department", department);
+        List<Employee> employees = query.list();
+        for(Employee employee : employees) {
+            System.out.println(employee);
+        }
+    }
+
 }
