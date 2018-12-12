@@ -1,10 +1,8 @@
 package info.chen.HQL;
 
 import info.chen.util.HibernateUtil;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -130,4 +128,66 @@ public class HQLTest {
         }
     }
 
+    @Test
+    public void testHQLLeftJoinFetch() {
+        // 迫切左外连接
+        String HQL = "SELECT DISTINCT d FROM Department d LEFT JOIN FETCH d.employees";
+        Query query = session.createQuery(HQL);
+        List<Department> departments = query.list();
+        System.out.println(departments);
+        /*for(Department department : departments) {
+            // 计算每个部门里面的人数
+            System.out.println(department.getName() + " - " + department.getEmployees().size());
+        }*/
+    }
+
+    @Test
+    public void testHQLLeftJoin() {
+        String HQL = "SELECT DISTINCT d FROM Department d LEFT JOIN d.employees";
+        Query query = session.createQuery(HQL);
+        /*List<Object[]> list = query.list();
+        for(Object[] object : list) {
+            System.out.println(Arrays.asList(object));
+            break;
+        }*/
+
+        List<Department> departments = query.list();
+        System.out.println(departments.size());
+        System.out.println(departments);
+        for(Department department : departments) {
+            // LEFT JOIN 是不会会初始化集合对象，只有在使用的时候才会发送相应的 SQL 去查询
+            System.out.println(department.getName() + " - " + department.getEmployees().size());
+        }
+    }
+
+    /**
+     * QBC Query By Criteria
+     */
+    @Test
+    public void testQBCHelloWorld() {
+
+        // 创建一个 criteria 对象
+        Criteria criteria = session.createCriteria(Employee.class);
+
+        // 添加查询条件
+        criteria.add(Restrictions.eq("name", "Kyoichi"));
+
+        // 执行查询
+        List<Employee> employees = criteria.list();
+        System.out.println(employees.size());
+    }
+
+    @Test
+    public void testNativeSQL() {
+        String SQL = "SELECT e.name, e.salary FROM employee e WHERE id = :id";
+        Query query = session.createSQLQuery(SQL);
+        query.setInteger("id", 5);
+
+        List<Object[]> employees = query.list();
+        System.out.println(employees.size());
+
+        for(Object[] obj : employees) {
+            System.out.println(Arrays.asList(obj));
+        }
+    }
 }
