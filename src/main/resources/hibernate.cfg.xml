@@ -40,8 +40,19 @@
 
         <!--auto create table-->
         <property name="hbm2ddl.auto">update</property>
-        <!--设置事务隔离级别-->
+        <!--设置事务隔离级别为 读提交
+            1. 在不关闭 seesion 的情况下，配合session.refresh() 方法才能够奏效；
+            2. 重新开启一个新的 session 也能够读取最新的持久对象 -->
         <property name="connection.isolation">2</property>
+
+        <!--开启二级缓存-->
+        <property name="cache.use_second_level_cache">true</property>
+
+        <!--使用 ehcache 作为二级缓存插件-->
+        <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
+        <!--开启查询缓存 注意：查询缓存是基于二级缓存的-->
+        <property name="hibernate.cache.use_query_cache">true</property>
         <!-- ==========entity mapping========== -->
         <!--<mapping resource="info/chen/model/xml_config/User.hbm.xml"/>-->
         <!--<mapping resource="info/chen/entity/Worker.hbm.xml"/>-->
@@ -79,6 +90,10 @@
         <!--HQL-->
         <mapping resource="info/chen/HQL/Department.hbm.xml"/>
         <mapping resource="info/chen/HQL/Employee.hbm.xml"/>
+
+        <class-cache class="info.chen.HQL.Employee" usage="read-write"/>
+        <class-cache class="info.chen.HQL.Department" usage="read-write"/>
+        <collection-cache collection="info.chen.HQL.Department.employees" usage="read-write"/>
     </session-factory>
 
 </hibernate-configuration>
